@@ -1,0 +1,21 @@
+﻿<table class="table table-hover">
+  <tr>
+    <th>Username</th>
+    <td><%= @teacher.username %></td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><%= @teacher.name %></td>
+  </tr>
+  <tr>
+    <th>Email Address</th>
+    <td><%= @teacher.email_address %></td>
+  </tr>
+  <tr>
+    <th>Date Of Birth</th>
+    <td><%= @teacher.date_of_birth %></td>
+  </tr>
+</table>
+
+
+<%= link_to 'Edit', edit_teacher_path(@teacher), class: 'btn btn-primary pull-right' %>

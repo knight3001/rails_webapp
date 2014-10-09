@@ -1,0 +1,22 @@
+﻿<% content_for :javascript do %>
+  <%= stylesheet_link_tag 'jquery.Jcrop' %>
+  <%= javascript_include_tag 'jquery.Jcrop' %>
+<% end %>
+
+<h1>Crop Avatar</h1>
+
+<%= image_tag @avatar.picture_url(:large), id: "cropbox" %>
+
+<h4>Preview</h4>
+<div style="width:100px; height:100px; overflow:hidden">
+  <%= image_tag @avatar.picture_url(:large), :id => "preview" %>
+</div>
+
+<%= form_for [@user, @avatar] do |f| %>
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Crop" %>
+  </div>
+<% end %>

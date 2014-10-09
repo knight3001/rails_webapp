@@ -1,0 +1,24 @@
+﻿<h2><strong><%= @user.email %></strong> Avatars</h2>
+<% @user.avatars.each do |avatar| %>
+  <p>
+    <strong>Title:</strong>
+    <%= avatar.title %>
+  </p>
+ 
+  <p>
+    <strong>Description:</strong>
+    <%= avatar.description %>
+  </p>
+  
+  <p>
+    <strong>Picture:</strong>
+    <%= image_tag avatar.picture_url(:avatar) if avatar.picture? %>
+    <%= link_to 'show', user_avatar_path(avatar.user,avatar) %>
+    |<%= link_to 'Edit', edit_user_avatar_path(avatar.user,avatar) %>
+    |<%= link_to 'Destroy Avatar', [avatar.user, avatar],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+
+<%= link_to 'Add Avatar', new_user_avatar_path(@user), class:"btn btn-primary" %>

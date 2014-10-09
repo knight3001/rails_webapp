@@ -1,0 +1,44 @@
+﻿<%= form_for @teacher do |f| %>
+<form role="form">
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited
+        this teacher from being saved:</h2>
+        <ul>
+        <% @teacher.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="username"><%= f.label :username %></label>
+    <%= f.text_field :username, :class => "form-control", :placeholder => "Username" %>
+  </div>
+  <% if @teacher.new_record? %>
+      <div class="form-group">
+        <label for="password"><%= f.label :password %></label>
+        <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+      </div>
+      <div class="form-group">
+        <label for="password_confirmation"><%= f.label :password_confirmation %></label>
+        <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Password" %>
+      </div>
+  <% end %>
+  <div class="form-group">
+    <label for="name"><%= f.label :name %></label>
+    <%= f.text_field :name, :class => "form-control", :placeholder => "name" %>
+  </div>
+  <div class="form-group">
+    <label for="email_address"><%= f.label :email_address %></label>
+    <%= f.email_field :email_address, :class => "form-control", :placeholder => "Email Address" %>
+  </div>
+  <div class="row">
+      <div class="form-group col-md-3 col-sm-3">
+        <label for="date_of_birth"><%= f.label :date_of_birth %></label>
+        <%= f.date_field :date_of_birth, :class => "form-control", :placeholder => "Date Of Birth" %>
+      </div>
+  </div>
+  <%= f.submit "submit", :class => "btn btn-default" %>
+</form>
+<% end %>
